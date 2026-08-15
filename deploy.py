@@ -12,6 +12,7 @@ import hashlib
 import json
 import os
 import sys
+import time
 import urllib.error
 import urllib.request
 
@@ -41,7 +42,7 @@ def get_token():
 TOKEN = get_token()
 
 
-def call(method, path, body=None, raw=None, extra_headers=None):
+def call(method, path, body=None, raw=None, extra_headers=None, tries=5):
     url = API + path
     url += ("&" if "?" in path else "?") + "teamId=" + TEAM_ID
     headers = {"Authorization": "Bearer " + TOKEN}
@@ -55,14 +56,27 @@ def call(method, path, body=None, raw=None, extra_headers=None):
         data = None
     if extra_headers:
         headers.update(extra_headers)
-    req = urllib.request.Request(url, data=data, headers=headers, method=method)
-    try:
-        with urllib.request.urlopen(req) as r:
-            payload = r.read().decode()
-            return json.loads(payload) if payload else {}
-    except urllib.error.HTTPError as e:
-        detail = e.read().decode()
-        raise SystemExit("HTTP %s em %s %s\n%s" % (e.code, method, path, detail))
+
+    last = None
+    for attempt in range(1, tries + 1):
+        req = urllib.request.Request(url, data=data, headers=headers, method=method)
+        try:
+            with urllib.request.urlopen(req, timeout=120) as r:
+                payload = r.read().decode()
+                return json.loads(payload) if payload else {}
+        except urllib.error.HTTPError as e:
+            detail = e.read().decode()
+            # 4xx nao adianta repetir (menos 429)
+            if e.code < 500 and e.code != 429:
+                raise SystemExit("HTTP %s em %s %s\n%s" % (e.code, method, path, detail))
+            last = "HTTP %s: %s" % (e.code, detail)
+        except (urllib.error.URLError, OSError) as e:
+            last = "rede: %s" % e
+        if attempt < tries:
+            wait = 2 ** attempt
+            print("     ...falhou (%s), retry %d/%d em %ds" % (last, attempt, tries - 1, wait))
+            time.sleep(wait)
+    raise SystemExit("Desisti apos %d tentativas em %s %s\n%s" % (tries, method, path, last))
 
 
 def collect():
