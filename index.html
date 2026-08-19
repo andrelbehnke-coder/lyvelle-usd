@@ -459,9 +459,15 @@ fbq('track','ViewContent',{content_name:'Dyson Airwrap Sirius',content_category:
   .offer-img{
     background:#fff;text-align:center;
     display:flex;align-items:center;justify-content:center;
-    padding:40px;border-right:1px solid var(--line);
+    padding:28px;border-right:1px solid var(--line);
   }
-  .offer-img img{width:88%;max-width:360px;height:auto}
+  /* o produto e' vertical: preencher a ALTURA da coluna e' o que faz ele
+     aparecer grande. Antes limitava a largura e sobrava branco em cima e embaixo. */
+  .offer-img img{
+    width:auto;max-width:100%;
+    height:100%;max-height:760px;
+    object-fit:contain;
+  }
   /* troca de cor: crossfade curto, sem "pisca" de imagem branca */
   .offer-img img{transition:opacity .32s ease}
   .offer-img.is-swapping img{opacity:0}
@@ -570,8 +576,10 @@ fbq('track','ViewContent',{content_name:'Dyson Airwrap Sirius',content_category:
 
   @media(max-width:820px){
     .offer-split{grid-template-columns:1fr}
-    .offer-img{border-right:none;border-bottom:1px solid var(--line);padding:32px}
-    .offer-img img{width:70%;max-width:280px}
+    .offer-img{border-right:none;border-bottom:1px solid var(--line);padding:24px}
+    /* empilhado: a coluna deixa de ter altura propria, entao o limite passa a
+       ser a altura maxima — largura livre pro produto crescer */
+    .offer-img img{width:auto;max-width:82%;height:auto;max-height:520px}
     .offer-body{padding:32px 28px}
   }
   @media(max-width:520px){.offer-body{padding:28px 22px}.offer-img{padding:24px}}
@@ -1132,8 +1140,8 @@ fbq('track','ViewContent',{content_name:'Dyson Airwrap Sirius',content_category:
     .proof-in > div:nth-child(3),.proof-in > div:nth-child(4){border-bottom:none}
 
     /* offer — compact */
-    .offer-img{padding:22px}
-    .offer-img img{width:72%;max-width:240px}
+    .offer-img{padding:20px}
+    .offer-img img{width:auto;max-width:86%;height:auto;max-height:420px}
     .offer-body{padding:26px 20px}
     .swatches{padding:16px 0}
     .swatch{width:42px;height:42px}
@@ -1465,7 +1473,7 @@ fbq('track','ViewContent',{content_name:'Dyson Airwrap Sirius',content_category:
       <div class="offer-img">
         <picture>
           <source id="offerImgSrc" srcset="Fotos/airwrap-ceramic-copper.webp" type="image/webp">
-          <img id="offerImg" src="Fotos/airwrap-ceramic-copper.jpg" alt="Dyson Airwrap Complete — Ceramic Copper" width="900" height="900" loading="lazy" decoding="async">
+          <img id="offerImg" src="Fotos/airwrap-ceramic-copper.jpg" alt="Dyson Airwrap Complete — Ceramic Copper" width="780" height="1461" loading="lazy" decoding="async">
         </picture>
       </div>
 
