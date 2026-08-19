@@ -255,11 +255,11 @@
   }
   // o rotulo do botao tambem varia, senao a repeticao entrega o script
   var CTAS = [
-    "Complete your order &mdash; $179",
-    "Secure yours &mdash; $179",
-    "Get it at $179 today",
+    "Complete your order &mdash; $129",
+    "Secure yours &mdash; $129",
+    "Get it at $129 today",
     "Order now &mdash; 70% off",
-    "Claim the $179 price",
+    "Claim the $129 price",
   ];
   var ctaVistos = [];
   function cta() {
@@ -447,7 +447,7 @@
     await say("Hi " + S.name + ", I'm " + AGENT + " from the " + STORE + " team.", true);
     await say("What can I help you with on the Airwrap?");
     await wait(400);
-    chips(["Is it a genuine Dyson?", "Why is it $179?", "How fast is shipping?", "Will it work on my hair?"]);
+    chips(["Is it a genuine Dyson?", "Why is it $129?", "How fast is shipping?", "Will it work on my hair?"]);
     S.busy = false; sync();
   }
 

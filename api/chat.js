@@ -36,11 +36,11 @@ function scrub(t) {
 // Cada frase abre com uma palavra diferente, e nunca repetimos uma ja usada na conversa.
 const FECHOS = [
   "Want me to get this moving for you today?",
-  "If you'd like it, the $179 holds while today's stock does.",
-  "Yours is sat there at $179 whenever you're ready.",
+  "If you'd like it, the $129 holds while today's stock does.",
+  "Yours is sat there at $129 whenever you're ready.",
   "Say the word and I'll have it with dispatch today.",
   "Whenever you want it, the button is right below.",
-  "Grab it at $179 today and I'll see it goes out.",
+  "Grab it at $129 today and I'll see it goes out.",
   "I can get it dispatched today if you order now.",
   "Ready when you are. That 70% lasts while stock does.",
   "Order comes through and it goes straight to dispatch.",
