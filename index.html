@@ -1945,7 +1945,10 @@ fbq('track','ViewContent',{content_name:'Dyson Airwrap Sirius',content_category:
   </div>
 
   <div class="cart-foot">
-    <a href="https://xd80cg-pf.myshopify.com/cart/49022193107114:1" class="btn" id="checkoutBtn" target="_blank" rel="noopener noreferrer">
+    <!-- Checkout na MESMA aba: _blank quebra em alguns navegadores/webviews
+         (Instagram, Facebook, TikTok in-app) e noreferrer zera o
+         document.referrer no destino, matando a atribuicao da venda. -->
+    <a href="https://xd80cg-pf.myshopify.com/cart/49022193107114:1" class="btn" id="checkoutBtn" target="_self">
       <span>Secure Checkout</span>
       <svg width="16" height="10" viewBox="0 0 16 10" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 5h14M11 1l4 4-4 4"/></svg>
     </a>

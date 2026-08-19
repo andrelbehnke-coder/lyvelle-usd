@@ -269,7 +269,7 @@
     ctaVistos.push(i);
     var a = document.createElement("a");
     a.className = "lvd-cta";
-    a.href = CHECKOUT; a.target = "_blank"; a.rel = "noopener";
+    a.href = CHECKOUT; a.target = "_self";
     a.innerHTML = CTAS[i];
     a.addEventListener("click", function () { track("ChatCheckoutClick"); evento("botao_clicado", { texto: CTAS[i].replace(/&[a-z]+;/g, "") }); });
     body.appendChild(a);
