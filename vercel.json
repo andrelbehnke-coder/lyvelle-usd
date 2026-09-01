@@ -29,6 +29,15 @@
       ]
     },
     {
+      "source": "/us49",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
       "source": "/console(.*)",
       "headers": [
         {
@@ -46,6 +55,10 @@
     {
       "source": "/us-97",
       "destination": "/us-97/index.html"
+    },
+    {
+      "source": "/us49",
+      "destination": "/us49/index.html"
     }
   ]
 }
