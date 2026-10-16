@@ -1,4 +1,4 @@
-/* Luvdaly live chat - Sophie.  Autocontido: injeta CSS + DOM, sem dependencia. */
+/* Zanbelle live chat - Sophie.  Autocontido: injeta CSS + DOM, sem dependencia. */
 (function () {
   "use strict";
   if (window.__lvdChat) return;
@@ -6,9 +6,9 @@
 
   var CFG = window.LVD_CHAT_CONFIG || {};
   var API = CFG.api || "/api/chat";
-  var CHECKOUT = CFG.checkout || "https://xd80cg-pf.myshopify.com/cart/49022193107114:1";
+  var CHECKOUT = CFG.checkout || "https://4cyk73-xy.myshopify.com/cart/48285628203166:1";
   var AGENT = CFG.agent || "Sophie";
-  var STORE = CFG.store || "Luvdaly";
+  var STORE = CFG.store || "Zanbelle";
   var KEY = "lvd_chat_v1";
   var IDLE = (CFG.idleMin || 10) * 60 * 1000;   // 10 min parado encerra o atendimento
   function novoSid() {
@@ -255,11 +255,11 @@
   }
   // o rotulo do botao tambem varia, senao a repeticao entrega o script
   var CTAS = [
-    "Complete your order &mdash; $129",
-    "Secure yours &mdash; $129",
-    "Get it at $129 today",
+    "Complete your order &mdash; $169",
+    "Secure yours &mdash; $169",
+    "Get it at $169 today",
     "Order now &mdash; 70% off",
-    "Claim the $129 price",
+    "Claim the $169 price",
   ];
   var ctaVistos = [];
   function cta() {
@@ -447,7 +447,7 @@
     await say("Hi " + S.name + ", I'm " + AGENT + " from the " + STORE + " team.", true);
     await say("What can I help you with on the Airwrap?");
     await wait(400);
-    chips(["Is it a genuine Dyson?", "Why is it $129?", "How fast is shipping?", "Will it work on my hair?"]);
+    chips(["Is it a genuine Dyson?", "Why is it $169?", "How fast is shipping?", "Will it work on my hair?"]);
     S.busy = false; sync();
   }
 
